@@ -14,6 +14,8 @@ import deviceRouter from './route/device';
 import LogRouter from './route/ActivityLog';
 import bcrypt from 'bcryptjs';
 import jwt from 'jsonwebtoken';
+import cookieParser from 'cookie-parser';
+
 
 require("dotenv").config();
 
@@ -28,7 +30,7 @@ const io = new Server(server, {
 global._io = io;
 //config app
 
-
+app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use('/public/', express.static('./public'));

@@ -1,10 +1,9 @@
 import jwt from 'jsonwebtoken';
-
 const authenticateToken = (req, res, next) => {
     const token = req.cookies.token;
 
     if (!token) {
-      return res.status(401).json({ message: 'Unauthorized' });
+      return res.redirect('/api/user/login');
     }
   
     jwt.verify(token, 'your_secret_key', (err, user) => {
